@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "5e5c1232-ea09-422e-b727-e5e60a2190d8",
+		"name": "Nest Ayacucho",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4665045"
+	},
+	"item": [
+		{
+			"name": "Pistas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Local}}/pistas",
+					"host": [
+						"{{Local}}"
+					],
+					"path": [
+						"pistas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pista x ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Local}}/pistas/35",
+					"host": [
+						"{{Local}}"
+					],
+					"path": [
+						"pistas",
+						"35"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pista x ID Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "nombre",
+							"value": "algo1",
+							"type": "text"
+						},
+						{
+							"key": "duracion",
+							"value": "360",
+							"type": "text"
+						},
+						{
+							"key": "interprete",
+							"value": "algo1",
+							"type": "text"
+						},
+						{
+							"key": "lanzamiento",
+							"value": "2023",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{Local}}/pistas",
+					"host": [
+						"{{Local}}"
+					],
+					"path": [
+						"pistas"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Local",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
