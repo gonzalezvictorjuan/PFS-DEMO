@@ -8,6 +8,8 @@ import { AppService } from "./app.service";
 
 import { PistaController } from "./pista/pista.controller";
 import { PistaService } from "./pista/pista.service";
+import { UserController } from './user/user.controller';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ import { PistaService } from "./pista/pista.service";
       rootPath: join(__dirname, "..", "client"),
     }),
   ],
-  controllers: [AppController, PistaController],
-  providers: [AppService, PistaService],
+  controllers: [AppController, PistaController, UserController],
+  providers: [AppService, PistaService, UserService],
 })
 export class AppModule {}

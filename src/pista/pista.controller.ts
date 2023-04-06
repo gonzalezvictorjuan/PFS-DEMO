@@ -17,35 +17,35 @@ export class PistaController {
 
   @Get() // url/pistas
   getPistas(): Pista[] {
-    return this.pistaService.getPistas();
+    return this.pistaService.getPistas('./src/pista/pistas.txt');
   }
 
-  @Get(":id") // url/pistas/:id >> /pistas/1
-  getPistaById(
-    @Param("id", ParseIntPipe)
-    id: number,
-  ): Pista {
-    return this.pistaService.getPistaById(id);
-  }
+//   @Get(":id") // url/pistas/:id >> /pistas/1
+//   getPistaById(
+//     @Param("id", ParseIntPipe)
+//     id: number,
+//   ): Pista {
+//     return this.pistaService.getPistaById(id);
+//   }
 
-  @Post()
-  postPista(@Body() body: any) {
-    // crear una nueva pista y hacer push
+//   @Post()
+//   postPista(@Body() body: any) {
+//     // crear una nueva pista y hacer push
 
-    console.log(body);
+//     console.log(body);
 
-    const { nombre, duracion, interprete, lanzamiento } = body;
+//     const { nombre, duracion, interprete, lanzamiento } = body;
 
-    this.pistaService.newPista(nombre, duracion, interprete, lanzamiento);
+//     this.pistaService.newPista(nombre, duracion, interprete, lanzamiento);
 
-    return { body };
-  }
+//     return { body };
+//   }
 
-  @Put(":id")
-  putPista() {
-    // Traer la pista y modificarla
-  }
+//   @Put(":id")
+//   putPista() {
+//     // Traer la pista y modificarla
+//   }
 
-  @Delete(":id")
-  deletePista() {}
-}
+//   @Delete(":id")
+//   deletePista() {}
+ }
