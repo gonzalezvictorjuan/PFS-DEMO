@@ -1,12 +1,12 @@
 export class Pista {
-  id: number; // Valor unico, no voy a tener dos pistas con el mismo ID
+  id: string; // Valor unico, no voy a tener dos pistas con el mismo ID
   nombre: string;
   duracion: number;
   interprete: string;
   lanzamiento: number;
 
   constructor(
-    id: number,
+    id: string,
     nombre: string,
     duracion: number,
     interprete: string,
@@ -17,5 +17,9 @@ export class Pista {
     this.duracion = duracion;
     this.interprete = interprete;
     this.lanzamiento = lanzamiento;
+  }
+
+  toString(): string {
+    return `${this.id},${this.nombre},${this.duracion},${this.interprete},${this.lanzamiento}`;
   }
 }

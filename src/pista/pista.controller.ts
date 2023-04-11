@@ -4,12 +4,13 @@ import {
   Delete,
   Get,
   Param,
-  ParseIntPipe,
+  ParseUUIDPipe,
   Post,
   Put,
 } from "@nestjs/common";
 import { PistaService } from "./pista.service";
 import { Pista } from "src/class/pista";
+import { CreatePistaDto } from "src/dto/create-pista.dto";
 
 @Controller("pistas")
 export class PistaController {
@@ -17,35 +18,27 @@ export class PistaController {
 
   @Get() // url/pistas
   getPistas(): Pista[] {
-    return this.pistaService.getPistas('./src/pista/pistas.txt');
+    return this.pistaService.getPistas();
   }
 
-//   @Get(":id") // url/pistas/:id >> /pistas/1
-//   getPistaById(
-//     @Param("id", ParseIntPipe)
-//     id: number,
-//   ): Pista {
-//     return this.pistaService.getPistaById(id);
-//   }
+  @Get(":id") // url/pistas/:id >> /pistas/a354c326-fc53-4079-9568-9de965eecb7a
+  getPistaById(
+    @Param("id", ParseUUIDPipe)
+    id: string,
+  ): Pista {
+    return this.pistaService.getPistaById(id);
+  }
 
-//   @Post()
-//   postPista(@Body() body: any) {
-//     // crear una nueva pista y hacer push
+  @Post()
+  postPista(@Body() createPistaDto: CreatePistaDto) {
+    return this.pistaService.createPista(createPistaDto);
+  }
 
-//     console.log(body);
+  //   @Put(":id")
+  //   putPista() {
+  //     // Traer la pista y modificarla
+  //   }
 
-//     const { nombre, duracion, interprete, lanzamiento } = body;
-
-//     this.pistaService.newPista(nombre, duracion, interprete, lanzamiento);
-
-//     return { body };
-//   }
-
-//   @Put(":id")
-//   putPista() {
-//     // Traer la pista y modificarla
-//   }
-
-//   @Delete(":id")
-//   deletePista() {}
- }
+  //   @Delete(":id")
+  //   deletePista() {}
+}

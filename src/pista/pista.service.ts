@@ -1,47 +1,66 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { Pista } from "src/class/pista";
-import * as fs from 'fs';
+import { v4 as uuid } from "uuid";
+import * as fs from "fs";
+import { CreatePistaDto } from "src/dto/create-pista.dto";
 
 @Injectable()
 export class PistaService {
- 
-  getPistas(url: string): Pista[] {
-    const pistas = [];
+  private Pistas: Pista[] = [];
+  private url: string = "./src/pista/pistas.txt";
 
-    let datos = fs.readFileSync(url, 'utf-8');
+  constructor() {
+    const datos = fs.readFileSync(this.url, "utf-8");
 
-    let renglon= datos.split('\r\n');
+    if (datos.length) {
+      const renglon = datos.split("\r\n");
 
-    for(let linea of renglon) {
-     let partes = linea.split(',');
+      for (let linea of renglon) {
+        let partes = linea.split(",");
 
-      let pista = new Pista(parseInt(partes[0]), partes[1], parseInt(partes[2]), partes[3], parseInt(partes[4]));
+        let pista = new Pista(
+          partes[0],
+          partes[1],
+          parseInt(partes[2]),
+          partes[3],
+          parseInt(partes[4]),
+        );
 
-      pistas.push(pista);
+        this.Pistas.push(pista);
+      }
     }
-      return pistas;
   }
 
-  // getPistaById(id: number): Pista {
-  //   const pista = this.Pistas.find((pista) => pista.id === id);
+  getPistas(): Pista[] {
+    return this.Pistas;
+  }
 
-  //   if (!pista) {
-  //     // devolver una exception
-  //     throw new NotFoundException();
-  //   }
+  getPistaById(id: string): Pista {
+    const pista = this.Pistas.find((pista) => pista.id === id);
 
-  //   return pista;
-  // }
+    if (!pista) {
+      // devolver una exception
+      throw new NotFoundException();
+    }
 
-  // newPista(
-  //   nombre: string,
-  //   duracion: number,
-  //   interprete: string,
-  //   lanzamiento: number,
-  // ) {
-  //   const id = this.Pistas.length;
-  //   const newPista = new Pista(id, nombre, duracion, interprete, lanzamiento);
+    return pista;
+  }
 
-  //   this.Pistas.push(newPista);
-  // }
+  createPista(CreatePistaDto: CreatePistaDto) {
+    const newPista: Pista = new Pista(
+      uuid(),
+      CreatePistaDto.nombre,
+      CreatePistaDto.duracion,
+      CreatePistaDto.interprete,
+      CreatePistaDto.lanzamiento,
+    );
+
+    const dataAppend = this.Pistas.length
+      ? "\n" + newPista.toString()
+      : newPista.toString();
+
+    this.Pistas.push(newPista);
+
+    fs.appendFileSync(this.url, dataAppend);
+  }
 }

@@ -29,47 +29,31 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{Local}}/pistas/35",
+					"raw": "{{Local}}/pistas/a354c326-fc53-4079-9568-9de965eecb7a",
 					"host": [
 						"{{Local}}"
 					],
 					"path": [
 						"pistas",
-						"35"
+						"a354c326-fc53-4079-9568-9de965eecb7a"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Pista x ID Copy",
+			"name": "Pista",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "nombre",
-							"value": "algo1",
-							"type": "text"
-						},
-						{
-							"key": "duracion",
-							"value": "360",
-							"type": "text"
-						},
-						{
-							"key": "interprete",
-							"value": "algo1",
-							"type": "text"
-						},
-						{
-							"key": "lanzamiento",
-							"value": "2023",
-							"type": "text"
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"abc2\",\r\n    \"duracion\": 360,\r\n    \"interprete\": \"algo2\",\r\n    \"lanzamiento\": 2023\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
 						}
-					]
+					}
 				},
 				"url": {
 					"raw": "{{Local}}/pistas",
