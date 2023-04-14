@@ -1,33 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <style>
-        /* Estilos para el contenedor */
-        
-        body {
-            display: grid;
-            place-items: center;
-            /* Centrar horizontal y verticalmente */
-            height: 100vh;
-            /* Alto del contenedor igual al alto de la ventana */
-        }
-        /* Estilos para el div */
-        
-        div {
-            width: 30%;
-            /* Ancho del 30% del contenedor */
-            height: 30%;
-            /* Alto del 30% del contenedor */
-            background-color: #f1f1f1;
-            /* Color de fondo del div */
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pistas</title>
 </head>
 
 <body>
-    <div id="contenedor"></div>
+    <h1>Pistas</h1>
 
+    <table border="1px solid black">
+
+        <thead>
+
+            <td>Identificador</td>
+
+            <td>Nombre</td>
+
+            <td>Duracion</td>
+
+            <td>Interprete</td>
+
+            <td>Lanzamiento</td>
+        </thead>
+
+        <thead>
+
+            <td> </td>
+
+            <td><input type="text" id="nombre"></td>
+
+            <td><input type="text" name="" value="" id="duracion"></td>
+
+            <td><input type="text" name="" value="" id="interprete"></td>
+
+            <td><input type="text" name="" value="" id="lanzamiento"></td>
+        </thead>
+        <thead>
+
+            <td colspan=4>
+                <button type="button" id="btnAgregar">Agregar</button>
+                <!-- <button type="button" id="btnDuracion">Duración</button> -->
+            </td>
+        </thead>
+
+        <tbody id="tblPistas">
+
+        </tbody>
+    </table>
+
+    <!-- <div id="total"></div> -->
     <script src="js/index.js"></script>
 </body>
 
