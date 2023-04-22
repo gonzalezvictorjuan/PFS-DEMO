@@ -16,6 +16,7 @@ const mostrarPistas = () => {
       <td>${r.duracion}</td>
       <td>${r.interprete}</td>
       <td>${r.lanzamiento}</td>
+      <td> <a href='http://localhost:3000/pistaDetail.html?index=${r.id}' > Ver detalles </a> </td>
     </tr>
  `
   }
