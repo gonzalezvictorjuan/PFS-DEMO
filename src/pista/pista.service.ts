@@ -46,7 +46,7 @@ export class PistaService {
     return pista;
   }
 
-  createPista(CreatePistaDto: CreatePistaDto) {
+  createPista(CreatePistaDto: CreatePistaDto): Pista {
     const newPista: Pista = new Pista(
       uuid(),
       CreatePistaDto.nombre,
@@ -62,5 +62,20 @@ export class PistaService {
     this.Pistas.push(newPista);
 
     fs.appendFileSync(this.url, dataAppend);
+
+    return newPista;
+  }
+
+  deletePista(id: string): boolean {
+    const pos = this.Pistas.findIndex((e) => {
+      return e.id == id;
+    });
+
+    if (pos != -1) {
+      this.Pistas.splice(pos, 1);
+      return true;
+    }
+
+    return false;
   }
 }

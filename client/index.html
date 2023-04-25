@@ -1,58 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pistas</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Pistas</h1>
 
     <table border="1px solid black">
+      <thead>
+        <td>Identificador</td>
 
-        <thead>
+        <td>Nombre</td>
 
-            <td>Identificador</td>
+        <td>Duracion</td>
 
-            <td>Nombre</td>
+        <td>Interprete</td>
 
-            <td>Duracion</td>
+        <td>Lanzamiento</td>
+      </thead>
 
-            <td>Interprete</td>
+      <thead>
+        <td></td>
 
-            <td>Lanzamiento</td>
-        </thead>
+        <td><input type="text" id="nombre" /></td>
 
-        <thead>
+        <td><input type="number" name="" value="" id="duracion" /></td>
 
-            <td> </td>
+        <td><input type="text" name="" value="" id="interprete" /></td>
 
-            <td><input type="text" id="nombre"></td>
+        <td><input type="number" name="" value="" id="lanzamiento" /></td>
+      </thead>
+      <thead>
+        <td colspan="4">
+          <button type="button" id="btnAgregar">Agregar</button>
+          <!-- <button type="button" id="btnDuracion">Duración</button> -->
+        </td>
+      </thead>
 
-            <td><input type="text" name="" value="" id="duracion"></td>
-
-            <td><input type="text" name="" value="" id="interprete"></td>
-
-            <td><input type="text" name="" value="" id="lanzamiento"></td>
-        </thead>
-        <thead>
-
-            <td colspan=4>
-                <button type="button" id="btnAgregar">Agregar</button>
-                <!-- <button type="button" id="btnDuracion">Duración</button> -->
-            </td>
-        </thead>
-
-        <tbody id="tblPistas">
-
-        </tbody>
+      <tbody id="tblPistas"></tbody>
     </table>
 
     <!-- <div id="total"></div> -->
     <script src="js/index.js"></script>
-</body>
-
+  </body>
 </html>

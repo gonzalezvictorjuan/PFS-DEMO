@@ -39,6 +39,8 @@ export class PistaController {
   //     // Traer la pista y modificarla
   //   }
 
-  //   @Delete(":id")
-  //   deletePista() {}
+  @Delete(":id")
+  deletePista(@Param("id") id: string): boolean {
+    return this.pistaService.deletePista(id);
+  }
 }

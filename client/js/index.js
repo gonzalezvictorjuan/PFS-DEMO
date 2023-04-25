@@ -1,28 +1,31 @@
 // let contenedor = document.getElementById('contenedor')
 
-let btnAgregar = document.getElementById('btnAgregar');
+let btnAgregar = document.getElementById("btnAgregar");
+
 // let btnDuracion = document.getElementById('btnDuracion');
 let pistas = [];
 
 const mostrarPistas = () => {
-  let contenedor = document.getElementById('tblPistas');
-  let tabla = '';
+  let contenedor = document.getElementById("tblPistas");
+  let tabla = "";
   for (let r of pistas) {
-    console.log(r)
-    tabla +=
-      `<tr>
+    //console.log(r);
+    tabla += `<tr>
       <td>${r.id}</td>
        <td>${r.nombre}</td>
       <td>${r.duracion}</td>
       <td>${r.interprete}</td>
       <td>${r.lanzamiento}</td>
       <td> <a href='http://localhost:3000/pistaDetail.html?index=${r.id}' > Ver detalles </a> </td>
+			<td> <button type="button">Eliminar</button></td>
     </tr>
- `
+ `;
   }
   contenedor.innerHTML = tabla;
-}
 
+  //const btnEliminar = document.getElementById("btnEliminar");
+  //btnEliminar.addEventListener("click", eliminar);
+};
 
 async function load() {
   const url_base = "http://localhost:3000";
@@ -32,45 +35,45 @@ async function load() {
   pistas = await respuesta.json();
   console.log(pistas);
 
-  mostrarPistas()
+  mostrarPistas();
 }
 
+const eliminar = (data) => {
+  console.log("a eliminar", data);
+};
 const agregar = async () => {
-  let nombre = document.getElementById('nombre').value;
-  let duracion = document.getElementById('duracion').value;
-  let interprete = document.getElementById('interprete').value;
-  let lanzamiento = document.getElementById('lanzamiento').value;
+  let nombre = document.getElementById("nombre").value;
+  let duracion = document.getElementById("duracion").value;
+  let interprete = document.getElementById("interprete").value;
+  let lanzamiento = document.getElementById("lanzamiento").value;
 
   let pista = {
-    "nombre": nombre,
-    "duracion": Number(duracion),
-    "interprete": interprete,
-    "lanzamiento": Number(lanzamiento),
-  }
-  if (aServidor(pista)) {
+    nombre: nombre,
+    duracion: Number(duracion),
+    interprete: interprete,
+    lanzamiento: Number(lanzamiento),
+  };
+  const response = await postPistaServidor(pista);
+
+  if (!Object.keys(response).includes("error")) {
+    pista.id = response.id;
     pistas.push(pista);
     mostrarPistas();
+  } else {
+    // manejo de error
   }
-}
+};
 
-
-const aServidor = async (datos) => {
-  let respuesta = await fetch('/pistas', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(datos)
+const postPistaServidor = async (datos) => {
+  const p = await fetch("/pistas", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(datos),
   });
-  return (await respuesta.text() == "ok");
-}
 
+  return await p.json();
+};
 
-
-
-btnAgregar.addEventListener('click', agregar);
-// btnDuracion.addEventListener('click', duracion);
-
-
+btnAgregar.addEventListener("click", agregar);
 
 load();
-
-
