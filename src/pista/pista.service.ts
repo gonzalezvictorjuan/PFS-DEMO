@@ -69,7 +69,7 @@ export class PistaService {
   deletePista(id: string): boolean {
     const pos = this.Pistas.findIndex((e) => {
       return e.id == id;
-    });
+    }); 
 
     if (pos != -1) {
       this.Pistas.splice(pos, 1);

@@ -1,4 +1,8 @@
 5e312d11-3449-46ae-ba2f-64820d26e518,abc2,360,algo2,2023
 
 dd11e69b-97f8-4504-afab-645dad688b5b,Cancion nueva ,250,Karen,2021
-039199bc-52c8-4248-a25b-1152e3cc1d09,Cancion 3,150,Juan,1990
+039199bc-52c8-4248-a25b-1152e3cc1d09,Cancion 3,150,Juan,1990a7b1ba46-da4c-45c2-9aae-b58a1f127d9c,Karen,453,Simari,435cea59855-29b0-4ac3-a5bf-2995c04aa20d,Karen,4345,Simari,435
+6c7d2a86-5192-4bc2-b63c-d185c42c44bc,Con la misma moneda,350,Karin,2000
+85dc3ff4-f492-4cfd-9152-423bffc1a7a1,Ando ganas,210,Los piojos,2000
+5b97d4fb-5cf1-483f-a3a1-fff93b9bf135,Pique,210,Shakira,20234b92796e-5b5b-4d27-99a1-a16d5299c93b,Pique,250,Shakira,2023
+c5bd9fbc-3e74-4445-b5de-ddc62ece9c32,Muchachos,250,La mosca,20229388996e-5b57-4ea9-8c7e-3ebd6cd57d74,Muchachos,250,La mosca,202270484887-e9cd-49bb-9d24-7d4b511a202f,Muchachos,250,La mosca,2022614e022c-36e6-480e-8e2d-458e0d1f55ca,Muchachos,250,La mosca,2022

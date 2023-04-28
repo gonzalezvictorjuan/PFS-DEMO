@@ -17,14 +17,32 @@ const mostrarPistas = () => {
       <td>${r.interprete}</td>
       <td>${r.lanzamiento}</td>
       <td> <a href='http://localhost:3000/pistaDetail.html?index=${r.id}' > Ver detalles </a> </td>
-			<td> <button type="button">Eliminar</button></td>
+			<td> <button type="button" class="btnEliminar" id="${r.id}">Eliminar</button></td>
     </tr>
  `;
   }
   contenedor.innerHTML = tabla;
 
-  //const btnEliminar = document.getElementById("btnEliminar");
-  //btnEliminar.addEventListener("click", eliminar);
+  const borrarPista = async(e) => {
+    let id = e.target.id;
+
+    let respuesta = await fetch(`/pistas/${id}`, {
+      method: 'DELETE',
+      headers: {"Content-Type" : "application/json"}
+    })
+
+    load();
+  }
+
+  let botonesBorrar = document.querySelectorAll('.btnEliminar'); 
+
+  botonesBorrar.forEach(boton => {
+
+    boton.addEventListener('click', (e) => {
+           borrarPista(e)
+    } )
+  })
+
 };
 
 async function load() {
@@ -41,6 +59,7 @@ async function load() {
 const eliminar = (data) => {
   console.log("a eliminar", data);
 };
+
 const agregar = async () => {
   let nombre = document.getElementById("nombre").value;
   let duracion = document.getElementById("duracion").value;
