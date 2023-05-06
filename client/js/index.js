@@ -19,29 +19,72 @@ const mostrarPistas = () => {
       <td> <a href='http://localhost:3000/pistaDetail.html?index=${r.id}' > Ver detalles </a> </td>
 			<td> <button type="button" class="btnEliminar" id="${r.id}">Eliminar</button></td>
     </tr>
+    <tr>
+    <td>${r.id}</td>
+    <td><input type="text" value="${r.nombre}" id="nombre${r.id}"</td> 
+    <td><input type="text" value="${r.duracion}" id="duracion${r.id}"</td>
+    <td><input type="text" value="${r.interprete}" id="interprete${r.id}"</td>
+    <td><input type="text"value="${r.lanzamiento}" id="lanzamiento${r.id}"</td>
+    <td> ---</td>
+
+    <td><button class="btnUpdPista" id="${r.id}">Actualizar</button></td>
+    </tr>
+    
  `;
   }
+
   contenedor.innerHTML = tabla;
 
-  const borrarPista = async(e) => {
+// Funcion para borrar pistas
+  const borrarPista = async (e) => {
     let id = e.target.id;
 
     let respuesta = await fetch(`/pistas/${id}`, {
       method: 'DELETE',
-      headers: {"Content-Type" : "application/json"}
+      headers: { "Content-Type": "application/json" }
     })
 
     load();
   }
-
-  let botonesBorrar = document.querySelectorAll('.btnEliminar'); 
+  
+//Evento a los botones borrar
+  let botonesBorrar = document.querySelectorAll('.btnEliminar');
 
   botonesBorrar.forEach(boton => {
 
     boton.addEventListener('click', (e) => {
-           borrarPista(e)
-    } )
+      borrarPista(e)
+    })
   })
+
+  async function btnActualizarClick(e) {
+
+    let id = e.target.id;
+    console.log(id);
+
+    let renglon = {
+    "nombre": document.querySelector(`#nombre${id}`).value,
+    "duracion": Number(document.querySelector(`#duracion${id}`).value),
+    "interprete": document.querySelector(`#interprete${id}`).value,
+    "lanzamiento": Number(document.querySelector(`#lanzamiento${id}`).value)
+    }
+
+    let respuesta = await fetch(`/pistas/${id}`, {
+             method :'PUT',
+             headers: { 'Content-Type' : 'application/json' },
+             body : JSON.stringify(renglon)
+      });
+
+      load();
+    }
+
+  let botonesActualizar = document.querySelectorAll(".btnUpdPista");
+
+  botonesActualizar.forEach(boton => {
+    boton.addEventListener("click", (e) => {
+      btnActualizarClick(e)
+    });
+  });
 
 };
 

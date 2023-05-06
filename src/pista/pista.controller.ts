@@ -14,7 +14,7 @@ import { CreatePistaDto } from "src/dto/create-pista.dto";
 
 @Controller("pistas")
 export class PistaController {
-  constructor(private readonly pistaService: PistaService) {}
+  constructor(private readonly pistaService: PistaService) { }
 
   @Get() // url/pistas
   getPistas(): Pista[] {
@@ -34,10 +34,10 @@ export class PistaController {
     return this.pistaService.createPista(createPistaDto);
   }
 
-  //   @Put(":id")
-  //   putPista() {
-  //     // Traer la pista y modificarla
-  //   }
+  @Put(":id")
+  putPista(@Body()pista: CreatePistaDto, @Param('id') id: string) : string {
+     return this.pistaService.updatePista(pista, id);
+  }
 
   @Delete(":id")
   deletePista(@Param("id") id: string): boolean {

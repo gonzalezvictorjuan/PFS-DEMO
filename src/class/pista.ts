@@ -22,4 +22,21 @@ export class Pista {
   toString(): string {
     return `${this.id},${this.nombre},${this.duracion},${this.interprete},${this.lanzamiento}`;
   }
+
+  setNombre(nuevoNombre: string): void {
+    this.nombre = nuevoNombre;
+  }
+
+  setDuracion(nuevaDuracion: number): void {
+    this.duracion = nuevaDuracion;
+  }
+
+  setInterprete(nuevoInterprete: string): void {
+    this.interprete = nuevoInterprete;
+  }
+
+  setLanzamiento(nuevoLanzamiento: number): void {
+    this.lanzamiento = nuevoLanzamiento;
+  }
+
 }
